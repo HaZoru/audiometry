@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% block stylesheet %}
+<style>
+    .dot {
+        height: 0.5em;
+        width: 0.5em;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: 0.5s;
+    }
+
+    .dot-active {
+        background-color: #3e4d5c;
+    }
+</style>
+
+{% endblock %}
+
+{% block intro %}
+<!-- hero from https://getbootstrap.com/docs/5.1/examples/heroes/ -->
+<div class="px-4 py-5 my-5 text-center">
+    <!-- <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="72" height="57" fill="currentColor" class="bi bi-question-lg mt-5"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+            d="M4.475 5.458c-.284 0-.514-.237-.47-.517C4.28 3.24 5.576 2 7.825 2c2.25 0 3.767 1.36 3.767 3.215 0 1.344-.665 2.288-1.79 2.973-1.1.659-1.414 1.118-1.414 2.01v.03a.5.5 0 0 1-.5.5h-.77a.5.5 0 0 1-.5-.495l-.003-.2c-.043-1.221.477-2.001 1.645-2.712 1.03-.632 1.397-1.135 1.397-2.028 0-.979-.758-1.698-1.926-1.698-1.009 0-1.71.529-1.938 1.402-.066.254-.278.461-.54.461h-.777ZM7.496 14c.622 0 1.095-.474 1.095-1.09 0-.618-.473-1.092-1.095-1.092-.606 0-1.087.474-1.087 1.091S6.89 14 7.496 14Z" />
+    </svg>
+    <h1 class="display-5 fw-bold" id="text">This will take about 20 minutes</h1>
+    <div class="col-lg-6 mx-auto mt-5">
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <button type="button" class="btn btn-primary btn-lg px-4 gap-3" id="btn1">Continue</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg px-4 d-none" id="btn2">Back</button>
+        </div>
+        <div class="dots mt-5">
+            <span class="dot dot-active" id="dot1"></span>
+            <span class="dot" id="dot2"></span>
+            <span class="dot" id="dot3"></span>
+            <!-- <span class="dot" id="dot4"></span> -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src="../static/intro.js"></script>
+{% endblock %}
