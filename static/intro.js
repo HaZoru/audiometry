@@ -6,13 +6,15 @@ const dots = document.querySelectorAll("span.dot");
 let slide = 0;
 let textContent = ['This will take about 20 minutes', '19 tones of different pitches will be played', 'Honest answers are appreciated']
 
-
+// listen for 'next' clicks
 btn1.addEventListener("click", () => {
     if (slide < 2) {
         slide += 1;
     }
     setSlider(slide);
 })
+
+// listen for 'back' clicks
 btn2.addEventListener("click", () => {
     if (slide > 0) {
         slide -= 1;
