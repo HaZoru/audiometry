@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% block player %}
 <!-- hero from https://getbootstrap.com/docs/5.1/examples/heroes/ -->
-<div class="px-4 py-5 my-5 text-center">
+<div class="px-4 py-5 my-5 text-center" id="lowerVolSlide">
     <!-- <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72"
         height="57"> -->
     <svg xmlns="http://www.w3.org/2000/svg" width="72" height="57" fill="currentColor" class="bi bi-music-note mt-5"
@@ -10,14 +10,44 @@
         <path fill-rule="evenodd" d="M9 3v10H8V3h1z" />
         <path d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z" />
     </svg>
-    <p class="mb-4 text-muted">Playing Audio 2 of 19</p>
+    <p class="mb-4 text-muted d-none" id="playIndicator">Playing audio</p>
+
+    <div class="col-lg-6 mx-auto">
+        <h1 class="display-5 fw-bold" id="dialogueBox">Lower your volumn</h1>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-3">
+            <button type="button" class="btn btn-primary btn-lg px-4 gap-3" id="lowerVolConfirmBtn">Done</button>
+            <button type="button" class="btn btn-primary btn-lg px-4 gap-3 d-none" id="playPauseBtn">Play</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg px-4 d-none" id="setBtn">Set</button>
+        </div>
+    </div>
+</div>
+<!-- end of setup -->
+<div class="px-4 py-5 my-5 text-center d-none" id="tonePlayer">
+    <!-- <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72"
+        height="57"> -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="72" height="57" fill="currentColor" class="bi bi-music-note mt-5"
+        viewBox="0 0 16 16">
+        <path d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z" />
+        <path fill-rule="evenodd" d="M9 3v10H8V3h1z" />
+        <path d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z" />
+    </svg>
+    <p class="mb-4 text-muted" id="playerIndicator">Playing Tone 1 of 19</p>
 
     <div class="col-lg-6 mx-auto">
         <h1 class="display-5 fw-bold">Can you hear a sound?</h1>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-3">
-            <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Yes, I can</button>
-            <button type="button" class="btn btn-outline-secondary btn-lg px-4">No</button>
+            <button type="button" class="btn btn-primary btn-lg px-4 gap-3" id="yesBtn">Yes, I can</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg px-4" id="noBtn">No</button>
         </div>
     </div>
 </div>
+
+
+{% endblock %}
+
+{% block script %}
+<script src="../static/pureTone.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+<script src="../static/player.js"></script>
 {% endblock %}

@@ -13,7 +13,7 @@ class PureTone {
         this.osc = audioCtx.createOscillator();
         this.osc.frequency.value = frequency;
         this.gain = audioCtx.createGain();
-        this.maxGain = initGain;
+        this.initGain = initGain;
         this.gain.gain.setValueAtTime(dBFSToGain(initGain), 0);
         // connect nodes
         this.gain.connect(audioCtx.destination);
@@ -27,10 +27,11 @@ class PureTone {
 
     stop() {
         this.osc.stop(audioCtx.currentTime);
+        return this
     }
 
     pulse() {
-        this.gain.gain.exponentialRampToValueAtTime(dBFSToGain(this.maxGain), audioCtx.currentTime + 2)
+        this.gain.gain.exponentialRampToValueAtTime(dBFSToGain(this.initGain), audioCtx.currentTime + 2)
         this.gain.gain.exponentialRampToValueAtTime(dBFSToGain(-90), audioCtx.currentTime + 5)
         this.timeoutId = setTimeout(() => {
             this.pulse();
@@ -38,11 +39,20 @@ class PureTone {
     }
 
     clearPulse() {
-        clearTimeout(this.timeout_id)
+        clearTimeout(this.timeoutId);
+        this.gain.gain.cancelAndHoldAtTime(audioCtx.currentTime);
+        this.gain.gain.value = dBFSToGain(-100);
+        return this
+
     }
 
     disconnect() {
         this.osc.disconnect(this.gain);
         this.gain.disconnect(audioCtx.destination);
+    }
+
+    reconnect() {
+        this.osc.connect(this.gain);
+        this.gain.connect(audioCtx.destination);
     }
 }
