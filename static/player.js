@@ -15,7 +15,7 @@ let setupTone
 lowerVolConfirmBtn.addEventListener("click", () => {
     logger1.textContent = 1 + " " + audioCtx.state
     function setUp() {
-        logger.textContent = 2 + " " + audioCtx.state
+        logger2.textContent = 2 + " " + audioCtx.state
         setupTone = new PureTone(3500, -60);
         dialogueBox.textContent = "Press play and lower your volumn to the point where only a faint sound is heard";
         lowerVolConfirmBtn.classList.add('d-none');
