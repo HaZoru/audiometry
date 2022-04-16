@@ -6,10 +6,16 @@ const setBtn = document.getElementById('setBtn');
 const playIndicator = document.getElementById('playIndicator');
 const dialogueBox = document.getElementById('dialogueBox');
 const loader = document.getElementById('loader');
+const logger1 = document.getElementById('logger1')
+const logger2 = document.getElementById('logger2')
+const logger3 = document.getElementById('logger3')
+const logger4 = document.getElementById('logger34')
 
 let setupTone
 lowerVolConfirmBtn.addEventListener("click", () => {
+    logger1.textContent = 1 + " " + audioCtx.state
     function setUp() {
+        logger.textContent = 2 + " " + audioCtx.state
         setupTone = new PureTone(3500, -60);
         dialogueBox.textContent = "Press play and lower your volumn to the point where only a faint sound is heard";
         lowerVolConfirmBtn.classList.add('d-none');
@@ -18,9 +24,11 @@ lowerVolConfirmBtn.addEventListener("click", () => {
     if (audioCtx.state === 'suspended') {
         audioCtx.resume()
         setUp();
+        logger3.textContent = 3 + " " + audioCtx.state
 
     } else {
         setUp();
+        logger4.textContent = 4 + " " + audioCtx.state
     }
 })
 let isPlaying = false;
