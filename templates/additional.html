@@ -4,17 +4,27 @@
 <div class="container col-xl-10 col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-lg-5 py-5">
         <div class="col-lg-7 text-center text-lg-start">
+            {% if age %}
+            <h1 class="display-4 fw-bold lh-1 mb-3">Welcome back,{% if name %} {{name}} {% endif %}</h1>
+            <p class="col-lg-10 fs-4">Would you like to
+                update your details?</p>
+            {% else %}
             <h1 class="display-4 fw-bold lh-1 mb-3">Please fill in a few more details</h1>
+            {% endif %}
+
             <p class="col-lg-10 fs-4 d-none" id="errLogs"></p>
         </div>
         <div class="col-md-10 mx-auto col-lg-5">
-            <form class="p-4 p-md-5 border rounded-3">
+            <form class="p-4 p-md-5 border rounded-3" action="/additional" method="post" id="additionalDetails">
                 <div class="form-floating mb-3">
-                    <input type="age" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <input type="age" name="age" class="form-control" id="floatingInput" placeholder="name@example.com"
+                        required="true" value={% if age %} {{age}} {% endif %}>
                     <label for="age">Age: </label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="name" class="form-control" id="floatingPassword" placeholder="Password">
+                    <input type="name" name="name" class="form-control" id="floatingPassword" placeholder="Password"
+                        value={% if name %} {{name}} {% endif %}>
+                    <input type="hidden" name="id" value="" id="id" />
                     <label for="name">Name: <i class="text-muted">(optional)</i> </label>
                 </div>
                 <!-- <div class="checkbox mb-3">
@@ -34,6 +44,10 @@
 
 {% block script %}
 <script>
-
+    // from https://stackoverflow.com/questions/7731778/get-query-string-parameters-url-values-with-jquery-javascript-querystring
+    var urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    const idInput = document.getElementById('id');
+    idInput.value = id;
 </script>
 {% endblock %}
