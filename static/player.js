@@ -5,6 +5,7 @@ const playPauseBtn = document.getElementById('playPauseBtn');
 const setBtn = document.getElementById('setBtn');
 const playIndicator = document.getElementById('playIndicator');
 const dialogueBox = document.getElementById('dialogueBox');
+const loader = document.getElementById('loader');
 
 let setupTone
 lowerVolConfirmBtn.addEventListener("click", () => {
@@ -82,7 +83,9 @@ nobtn.addEventListener('click', () => {
     Tone.stop().disconnect();
     dbfsVals.push(initdBfs - (3 * toneRepeat));
     if (nowPlaying === testFrequencies.length - 1) {
-        let data = { "dbfs": dbfsVals, "hz": testFrequencies }
+        tonePlayer.classList.add('d-none');
+        loader.classList.remove('d-none');
+        let data = { "dbfs": dbfsVals, "hz": testFrequencies };
         $.ajax({
             type: "POST",
             url: "/submit",
