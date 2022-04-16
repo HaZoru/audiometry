@@ -79,26 +79,29 @@ yesBtn.addEventListener('click', () => {
 })
 
 nobtn.addEventListener('click', () => {
+    Tone.stop().disconnect();
+    dbfsVals.push(initdBfs - (3 * toneRepeat));
     if (nowPlaying === testFrequencies.length - 1) {
-        console.log(dbfsVals) // push dbfsVal to backend
-        let data = { "dbfs": dbfsVals }
+        let data = { "dbfs": dbfsVals, "hz": testFrequencies }
         $.ajax({
             type: "POST",
-            url: "/results",
+            url: "/submit",
             data: JSON.stringify(data),
             contentType: "application/json",
             dataType: 'json',
             success: function (resp) {
-                console.log(resp);
+                id_ = resp["id"]
+                console.log(resp)
+                window.location.href = window.location.origin + "/additional?id=" + id_
+            },
+            error: function (err) {
+                console.log(err);
             }
         });
     } else {
-        Tone.stop().disconnect();
-        dbfsVals.push(initdBfs - (3 * toneRepeat));
         nowPlaying += 1;
         toneRepeat = 0;
         playTone(initdBfs);
-        console.log(testFrequencies[nowPlaying], nowPlaying)
     }
 })
 

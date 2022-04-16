@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block player %}
+<!-- hero from https://getbootstrap.com/docs/5.1/examples/heroes/ -->
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5">
+        <div class="col-lg-7 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 mb-3">Please fill in a few more details</h1>
+            <p class="col-lg-10 fs-4 d-none" id="errLogs"></p>
+        </div>
+        <div class="col-md-10 mx-auto col-lg-5">
+            <form class="p-4 p-md-5 border rounded-3">
+                <div class="form-floating mb-3">
+                    <input type="age" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="age">Age: </label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="name" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="name">Name: <i class="text-muted">(optional)</i> </label>
+                </div>
+                <!-- <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>-->
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+                <hr class="my-4">
+                <small class="text-muted">These details are only used for analytical purposes</small>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+
+</script>
+{% endblock %}
