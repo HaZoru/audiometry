@@ -10,7 +10,7 @@ const loader = document.getElementById('loader');
 let setupTone
 lowerVolConfirmBtn.addEventListener("click", () => {
     function setUp() {
-        setupTone = new PureTone(3500, -30);
+        setupTone = new PureTone(3500, -60);
         dialogueBox.textContent = "Press Play and start increasing the volumn. Stop increasing when you hear a sound";
         lowerVolConfirmBtn.classList.add('d-none');
         playPauseBtn.classList.remove('d-none');
