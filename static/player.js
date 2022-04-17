@@ -73,10 +73,16 @@ let toneRepeat = 0;
 let dbfsVals = []
 let Tone;
 
+
 function playTone(dbfs) {
     Tone = new PureTone(testFrequencies[nowPlaying], dbfs);
     Tone.play().pulse()
-    playerIndicator.textContent = `Playing Audio ${nowPlaying + 1} of ${testFrequencies.length} with dbfs:${dbfs} and hz:${testFrequencies[nowPlaying]}`
+    playerIndicator.textContent = `Playing Audio ${nowPlaying + 1} of ${testFrequencies.length}`
+    if (expertMode) {
+        // defined in layout.js
+        dbfsLog.textContent = `dbfs: ${dbfs}`;
+        hzLog.textContent = `hz: ${testFrequencies[nowPlaying]}`
+    }
 }
 
 yesBtn.addEventListener('click', () => {
