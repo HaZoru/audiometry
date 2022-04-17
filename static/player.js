@@ -1,4 +1,4 @@
-const lowerVolSlide = document.getElementById('lowerVolSlide');
+const setupSlide = document.getElementById('setupSlide');
 const tonePlayer = document.getElementById('tonePlayer');
 const lowerVolConfirmBtn = document.getElementById('lowerVolConfirmBtn');
 const playPauseBtn = document.getElementById('playPauseBtn');
@@ -6,29 +6,21 @@ const setBtn = document.getElementById('setBtn');
 const playIndicator = document.getElementById('playIndicator');
 const dialogueBox = document.getElementById('dialogueBox');
 const loader = document.getElementById('loader');
-const logger1 = document.getElementById('logger1')
-const logger2 = document.getElementById('logger2')
-const logger3 = document.getElementById('logger3')
-const logger4 = document.getElementById('logger34')
 
 let setupTone
 lowerVolConfirmBtn.addEventListener("click", () => {
-    logger1.textContent = 1 + " " + audioCtx.state
     function setUp() {
-        logger2.textContent = 2 + " " + audioCtx.state
-        setupTone = new PureTone(3500, -60);
-        dialogueBox.textContent = "Press play and lower your volumn to the point where only a faint sound is heard";
+        setupTone = new PureTone(3500, -30);
+        dialogueBox.textContent = "Press Play and start increasing the volumn. Stop increasing when you hear a sound";
         lowerVolConfirmBtn.classList.add('d-none');
         playPauseBtn.classList.remove('d-none');
     }
     if (audioCtx.state === 'suspended') {
         audioCtx.resume()
         setUp();
-        logger3.textContent = 3 + " " + audioCtx.state
 
     } else {
         setUp();
-        logger4.textContent = 4 + " " + audioCtx.state
     }
 })
 let isPlaying = false;
@@ -36,31 +28,38 @@ let firstToggle = true;
 playPauseBtn.addEventListener("click", () => {
     setBtn.classList.remove('d-none')
     if (!isPlaying && firstToggle) {
-        setupTone.play().pulse();
+        setupTone.play()
         isPlaying = true;
         firstToggle = false;
         playPauseBtn.textContent = "Pause";
     } else if (!isPlaying) {
         //play sample
-        setupTone.pulse();
+        setupTone.reconnect();
         isPlaying = true;
         playPauseBtn.textContent = "Pause";
     } else {
         // pause sample
-        setupTone.clearPulse();
+        setupTone.disconnect();
         isPlaying = false;
         playPauseBtn.textContent = "Play";
     }
 })
-
+let startTest = false;
 setBtn.addEventListener("click", () => {
-    setupTone.clearPulse().stop().disconnect();
+    setupTone.stop();
     isPlaying = false;
     playPauseBtn.textContent = "Play";
-    lowerVolSlide.classList.add('d-none');
-    tonePlayer.classList.remove('d-none');
-    // call some function here to set up other pure tone players and layout
-    playTone(initdBfs)
+    playPauseBtn.classList.add('d-none');
+    dialogueBox.textContent = "Do not change your volumn untill the test is over!";
+    setBtn.textContent = "START";
+
+    if (startTest) {
+        setupSlide.classList.add('d-none');
+        tonePlayer.classList.remove('d-none');
+        // call some function here to set up other pure tone players and layout
+        playTone(initdBfs)
+    };
+    startTest = true;
 })
 
 const yesBtn = document.getElementById('yesBtn');
