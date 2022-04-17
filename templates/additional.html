@@ -32,7 +32,8 @@
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
                 </div>-->
-                <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">{% if age %}Update{% else %}Submit{% endif
+                    %}</button>
                 <hr class="my-4">
                 <small class="text-muted">These details are only used for analytical purposes</small>
             </form>
