@@ -63,7 +63,7 @@ def additional():
             return 'invalid request', 400
         add = {"$set": {"name": name, "age": age}}
         collection.update_one({"_id": _id}, add)
-        return f'<strong style="color: green;">success</strong>. Thank you for your time <br> <br> id: {_id} <br> This id can be used to access your details', 200
+        return f'<div style="font-size:25px;"> <strong style="color: green;">success</strong>. Thank you for your time <br> <br> id: {_id} <br> This id can be used to access your details </div>', 200
 
 
 def form_data_validators(age, name, mongo_id):
