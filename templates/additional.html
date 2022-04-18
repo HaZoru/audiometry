@@ -43,7 +43,7 @@
     // from https://stackoverflow.com/questions/7731778/get-query-string-parameters-url-values-with-jquery-javascript-querystring
     var urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
-    const idInput = document.getElementById('id');
-    idInput.value = id;
+    const idStore = document.getElementById('id');
+    idStore.value = id;
 </script>
 {% endblock %}

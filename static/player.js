@@ -98,6 +98,7 @@ nobtn.addEventListener('click', () => {
     if (nowPlaying === testFrequencies.length - 1) {
         tonePlayer.classList.add('d-none');
         loader.classList.remove('d-none');
+        expertModeLogs.classList.add('d-none')
         let data = { "dbfs": dbfsVals, "hz": testFrequencies };
         $.ajax({
             type: "POST",
