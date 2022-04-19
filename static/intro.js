@@ -6,12 +6,18 @@ const btn2 = document.getElementById("btn2");
 const dots = document.querySelectorAll("span.dot");
 let slide = 0;
 let textContent = [
+  "Test your hearing threshold for different sound frequencies",
   "This will take about 20 minutes",
   "Follow the instructions on screen",
   "Headphones are recommended",
   "Honest answers are appreciated",
 ];
 let svgs = [
+  `<svg xmlns="http://www.w3.org/2000/svg" width="72" height="57" fill="currentColor" class="bi bi-ear-fill mt-5"
+  viewBox="0 0 16 16">
+  <path
+      d="M8.5 0A5.5 5.5 0 0 0 3 5.5v7.047a3.453 3.453 0 0 0 6.687 1.212l.51-1.363a4.59 4.59 0 0 1 .67-1.197l2.008-2.581A5.34 5.34 0 0 0 8.66 0H8.5ZM7 5.5v2.695c.112-.06.223-.123.332-.192.327-.208.577-.44.72-.727a.5.5 0 1 1 .895.448c-.256.513-.673.865-1.079 1.123A8.538 8.538 0 0 1 7 9.313V11.5a.5.5 0 0 1-1 0v-6a2.5 2.5 0 0 1 5 0V6a.5.5 0 0 1-1 0v-.5a1.5 1.5 0 1 0-3 0Z" />
+</svg>`,
   `<svg xmlns="http://www.w3.org/2000/svg" width="72" height="57" fill="currentColor" class="bi bi-hourglass mt-5" viewBox="0 0 16 16">
 <path d="M2 1.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1-.5-.5zm2.5.5v1a3.5 3.5 0 0 0 1.989 3.158c.533.256 1.011.791 1.011 1.491v.702c0 .7-.478 1.235-1.011 1.491A3.5 3.5 0 0 0 4.5 13v1h7v-1a3.5 3.5 0 0 0-1.989-3.158C8.978 9.586 8.5 9.052 8.5 8.351v-.702c0-.7.478-1.235 1.011-1.491A3.5 3.5 0 0 0 11.5 3V2h-7z"/>
 </svg>`,
@@ -31,9 +37,9 @@ btn1.addEventListener("click", () => {
   /**
    * click event handler for 'next' clicks
    */
-  if (slide === 3) {
+  if (slide === 4) {
     window.location.pathname = "/test";
-  } else if (slide < 3) {
+  } else if (slide < 4) {
     slide += 1;
   }
   setSlider(slide);
@@ -71,7 +77,7 @@ function setSlider(slide) {
   if (slide === 0) {
     btn1.textContent = "Continue";
     btn2.classList.add("d-none");
-  } else if (slide === 3) {
+  } else if (slide === 4) {
     btn1.textContent = "Start";
   } else {
     btn1.textContent = "Ok";
