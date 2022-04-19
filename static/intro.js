@@ -8,6 +8,7 @@ let slide = 0;
 let textContent = [
   "This will take about 20 minutes",
   "Follow the instructions on screen",
+  "Headphones are recommended",
   "Honest answers are appreciated",
 ];
 let svgs = [
@@ -16,6 +17,9 @@ let svgs = [
 </svg>`,
   `<svg xmlns="http://www.w3.org/2000/svg" width="72" height="57" fill="currentColor" class="bi bi-exclamation-lg mt-5" viewBox="0 0 16 16">
 <path d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0L7.005 3.1ZM7 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"/>
+</svg>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" width="72" height="57" fill="currentColor" class="bi bi-headphones mt-5" viewBox="0 0 16 16">
+<path d="M8 3a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a6 6 0 1 1 12 0v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1V8a5 5 0 0 0-5-5z"/>
 </svg>`,
   `<svg xmlns="http://www.w3.org/2000/svg" width="72" height="57" fill="currentColor" class="bi bi-chat-right-text mt-5" viewBox="0 0 16 16">
 <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"/>
@@ -27,9 +31,9 @@ btn1.addEventListener("click", () => {
   /**
    * click event handler for 'next' clicks
    */
-  if (slide === 2) {
+  if (slide === 3) {
     window.location.pathname = "/test";
-  } else if (slide < 2) {
+  } else if (slide < 3) {
     slide += 1;
   }
   setSlider(slide);
@@ -67,7 +71,7 @@ function setSlider(slide) {
   if (slide === 0) {
     btn1.textContent = "Continue";
     btn2.classList.add("d-none");
-  } else if (slide === 2) {
+  } else if (slide === 3) {
     btn1.textContent = "Start";
   } else {
     btn1.textContent = "Ok";

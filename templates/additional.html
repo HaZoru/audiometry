@@ -21,13 +21,20 @@
                         required="true" value={% if age %} {{age}} {% endif %}>
                     <label for="age">Age: </label>
                 </div>
+                <select class="form-select mb-3" aria-label="Default select example" id="sex" name="sex">
+                    <option value=None>Sex: </option>
+                    <option value="male" {% if sex=="male" %} selected {% endif %}>Male</option>
+                    <option value="female" {% if sex=="female" %} selected {% endif %}>Female</option>
+                </select>
                 <div class="form-floating mb-3">
                     <input type="name" name="name" class="form-control" id="floatingPassword" placeholder="Password"
                         value={% if name %} {{name}} {% endif %}>
                     <input type="hidden" name="id" value="" id="id" />
                     <label for="name">Name: <i class="text-muted">(optional)</i> </label>
                 </div>
-                <button class="w-100 btn btn-lg btn-primary" type="submit">{% if age %}Update{% else %}Submit{% endif
+                <button class="w-100 btn btn-lg btn-primary" type="submit" id="submitBtn">{% if age %}Update{% else
+                    %}Submit{%
+                    endif
                     %}</button>
                 <hr class="my-4">
                 <small class="text-muted">These details are only used for analytical purposes</small>
