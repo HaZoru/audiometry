@@ -12,7 +12,7 @@ class PureTone {
   /**
    * Creates a sin wave of given frequency and gain and provide various methods to control playback
    * @param {number} frequency in hertz
-   * @param {number} initDbfs maps to ampitude [-1,1], max value = 0
+   * @param {number} initDbfs maps to amplitude [-1,1], max value = 0
    */
   constructor(frequency, initDbfs) {
     this.osc = audioCtx.createOscillator();

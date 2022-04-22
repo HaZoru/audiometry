@@ -17,7 +17,7 @@ lowerVolConfirmBtn.addEventListener("click", () => {
   function setUp() {
     setupTone = new PureTone(3500, -60);
     dialogueBox.textContent =
-      "Press Play and start increasing the volumn. Stop increasing when you hear a sound";
+      "Press Play and start increasing the volume. Stop increasing when you hear a sound";
     lowerVolConfirmBtn.classList.add("d-none");
     playPauseBtn.classList.remove("d-none");
   }
@@ -65,8 +65,7 @@ setBtn.addEventListener("click", () => {
   isPlaying = false;
   playPauseBtn.textContent = "Play";
   playPauseBtn.classList.add("d-none");
-  dialogueBox.textContent =
-    "Do not change your volumn untill the test is over!";
+  dialogueBox.textContent = "Do not change your volume until the test is over!";
   setBtn.textContent = "START";
 
   if (startTest) {
@@ -164,9 +163,9 @@ nobtn.addEventListener("click", () => {
   /**
      * click event handler for 'no' (can't hear sound) button
      * discard current playing tone oscillator and create a new one 
-       with the next frequency in testFrequncies array.
+       with the next frequency in testFrequencies array.
      * checks for last test frequency.
-       fire an ajax call to backend with recorded infomation.
+       fire an ajax call to backend with recorded information.
        on ajax success redirect user to fill in additional info.
      */
 
