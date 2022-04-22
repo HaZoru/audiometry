@@ -32,6 +32,7 @@ class PureTone {
   }
 
   stop() {
+    console.log(this.osc);
     this.osc.stop(audioCtx.currentTime);
     return this;
   }
