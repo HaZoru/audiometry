@@ -57,7 +57,9 @@ playPauseBtn.addEventListener("click", () => {
 let startTest = false;
 setBtn.addEventListener("click", () => {
   /**
-   * click event handler; start test if there is a click on last dialogue slide
+   * click event handler;
+   * start test if there is a click on last dialogue slide
+   * change slides
    */
   setupTone.stop();
   isPlaying = false;
@@ -203,7 +205,7 @@ nobtn.addEventListener("click", () => {
 function setPagination(mode) {
   /**
    * mode 1 set done to active box, set active to next box
-   * mode 2 increment red to the current active color
+   * mode 2 set different classes to change color on each hit
    */
   if (mode === 1) {
     target = page_boxes[nowPlaying];
@@ -222,6 +224,5 @@ function setPagination(mode) {
       target.classList.remove("two");
       target.classList.add("one");
     }
-    // target_child.style.color = `purple !important`;
   }
 }

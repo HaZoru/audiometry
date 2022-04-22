@@ -1,22 +1,7 @@
 {% extends 'layout.html' %}
 {% block stylesheet %}
-<style>
-    .dot {
-        height: 0.5em;
-        width: 0.5em;
-        background-color: #bbb;
-        border-radius: 50%;
-        display: inline-block;
-        transition: 0.5s;
-    }
-
-    .dot-active {
-        background-color: #3e4d5c;
-    }
-</style>
-
+<link rel="stylesheet" href="../static/styles/intro.css">
 {% endblock %}
-
 {% block intro %}
 <!-- hero from https://getbootstrap.com/docs/5.1/examples/heroes/ -->
 <div class="px-4 py-5 my-5 text-center">
@@ -44,7 +29,6 @@
     </div>
 </div>
 {% endblock %}
-
 {% block script %}
 <script src="../static/intro.js"></script>
 {% endblock %}
