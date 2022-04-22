@@ -133,7 +133,7 @@ function playTone(dbfs) {
    */
 
   Tone = new PureTone(testFrequencies[nowPlaying], dbfs);
-  Tone.play().pulse();
+  Tone.play();
   playerIndicator.textContent = `Playing Audio ${nowPlaying + 1} of ${
     testFrequencies.length
   }`;
@@ -152,7 +152,7 @@ yesBtn.addEventListener("click", () => {
        with same frequency but decreased dbfs
      */
 
-  Tone.clearPulse().stop().disconnect();
+  Tone.stop().disconnect();
   console.log(initdBfs - 3 * toneRepeat);
   yesBtnNotify.classList.remove("d-none");
   setPagination(2);
