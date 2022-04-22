@@ -1,3 +1,4 @@
+var AudioContext = window.AudioContext || window.webkitAudioContext;
 audioCtx = new AudioContext();
 
 function dBFSToGain(dbfs) {
