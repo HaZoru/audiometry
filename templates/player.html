@@ -1,28 +1,6 @@
 {% extends 'layout.html' %}
 {% block stylesheet %}
-<style>
-    .page-item.active a {
-        background-color: rgb(212, 79, 79) !important;
-        border: solid 1px rgb(212, 79, 79) !important;
-    }
-
-    .page-item.active.one a {
-        background-color: rgb(215, 145, 145) !important;
-        border: solid 1px rgb(215, 145, 145) !important;
-    }
-
-    .page-item.active.two a {
-        background-color: rgb(255, 180, 152) !important;
-        border: solid 1px rgb(255, 180, 152) !important;
-    }
-
-    .page-item.done a {
-        background-color: rgb(51, 174, 106) !important;
-        border: solid 1px rgb(51, 174, 106) !important;
-        color: #fff !important;
-    }
-</style>
-
+<link rel="stylesheet" href="../static/styles/player.css">
 {% endblock %}
 {% block player %}
 <!-- hero from https://getbootstrap.com/docs/5.1/examples/heroes/ -->
@@ -68,6 +46,7 @@
             <button type="button" class="btn btn-primary btn-lg px-4 gap-3" id="yesBtn">Yes, I do</button>
             <button type="button" class="btn btn-outline-secondary btn-lg px-4" id="noBtn">No</button>
         </div>
+        <p class="mt-4 text-muted d-none" id="yesBtnNotify">* Hit yes till you don't hear a sound</p>
     </div>
 </div>
 

@@ -1,0 +1,20 @@
+.page-item.active a {
+    background-color: rgb(212, 79, 79) !important;
+    border: solid 1px rgb(212, 79, 79) !important;
+}
+
+.page-item.active.one a {
+    background-color: rgb(215, 145, 145) !important;
+    border: solid 1px rgb(215, 145, 145) !important;
+}
+
+.page-item.active.two a {
+    background-color: rgb(255, 180, 152) !important;
+    border: solid 1px rgb(255, 180, 152) !important;
+}
+
+.page-item.done a {
+    background-color: rgb(51, 174, 106) !important;
+    border: solid 1px rgb(51, 174, 106) !important;
+    color: #fff !important;
+}

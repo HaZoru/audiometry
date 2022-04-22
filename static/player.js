@@ -7,6 +7,7 @@ const playIndicator = document.getElementById("playIndicator");
 const dialogueBox = document.getElementById("dialogueBox");
 const loader = document.getElementById("loader");
 let page_boxes;
+const yesBtnNotify = document.getElementById("yesBtnNotify");
 
 let setupTone;
 lowerVolConfirmBtn.addEventListener("click", () => {
@@ -151,6 +152,7 @@ yesBtn.addEventListener("click", () => {
 
   Tone.clearPulse().stop().disconnect();
   console.log(initdBfs - 3 * toneRepeat);
+  yesBtnNotify.classList.remove("d-none");
   setPagination(2);
   toneRepeat += 1;
   playTone(initdBfs - 3 * toneRepeat);
@@ -190,6 +192,7 @@ nobtn.addEventListener("click", () => {
       },
     });
   } else {
+    yesBtnNotify.classList.add("d-none");
     setPagination(1);
     nowPlaying += 1;
     toneRepeat = 0;
