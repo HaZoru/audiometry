@@ -1,4 +1,29 @@
 {% extends 'layout.html' %}
+{% block stylesheet %}
+<style>
+    .page-item.active a {
+        background-color: rgb(212, 79, 79) !important;
+        border: solid 1px rgb(212, 79, 79) !important;
+    }
+
+    .page-item.active.one a {
+        background-color: rgb(215, 145, 145) !important;
+        border: solid 1px rgb(215, 145, 145) !important;
+    }
+
+    .page-item.active.two a {
+        background-color: rgb(255, 180, 152) !important;
+        border: solid 1px rgb(255, 180, 152) !important;
+    }
+
+    .page-item.done a {
+        background-color: rgb(51, 174, 106) !important;
+        border: solid 1px rgb(51, 174, 106) !important;
+        color: #fff !important;
+    }
+</style>
+
+{% endblock %}
 {% block player %}
 <!-- hero from https://getbootstrap.com/docs/5.1/examples/heroes/ -->
 <div class="px-4 py-5 my-5 text-center" id="setupSlide">
@@ -31,7 +56,12 @@
         <path d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z" />
     </svg>
     <p class="mb-4 text-muted" id="playerIndicator">Playing Tone 1 of 19</p>
-
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center flex-wrap" id="pagination-bar">
+            <!-- <li class="page-item active"><a class="page-link mt-1" href="#">0</a></li>
+            <li class="page-item done"><a class="page-link mt-1" href="#">10</a></li> -->
+        </ul>
+    </nav>
     <div class="col-lg-6 mx-auto">
         <h1 class="display-5 fw-bold">Do you hear a sound?</h1>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-3">

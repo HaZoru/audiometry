@@ -6,6 +6,7 @@ const setBtn = document.getElementById("setBtn");
 const playIndicator = document.getElementById("playIndicator");
 const dialogueBox = document.getElementById("dialogueBox");
 const loader = document.getElementById("loader");
+let page_boxes;
 
 let setupTone;
 lowerVolConfirmBtn.addEventListener("click", () => {
@@ -68,6 +69,23 @@ setBtn.addEventListener("click", () => {
   if (startTest) {
     setupSlide.classList.add("d-none");
     tonePlayer.classList.remove("d-none");
+    // create the pagination elements based on number of test frequencies
+    const pagination_bar = document.getElementById("pagination-bar");
+
+    for (let i = 1; i < testFrequencies.length + 1; i++) {
+      const page_link = document.createElement("a");
+      page_link.classList.add("page-link", "mt-1");
+      page_link.textContent = `${i}`;
+      const page_item = document.createElement("li");
+      page_item.classList.add("page-item");
+      if (i === 1) {
+        page_item.classList.add("active");
+      }
+      page_item.appendChild(page_link);
+      // Append to main:
+      pagination_bar.appendChild(page_item);
+      page_boxes = document.querySelectorAll("li.page-item");
+    }
     // call some function here to set up other pure tone players and layout
     playTone(initdBfs);
   }
@@ -79,7 +97,6 @@ setBtn.addEventListener("click", () => {
 const yesBtn = document.getElementById("yesBtn");
 const nobtn = document.getElementById("noBtn");
 const playerIndicator = document.getElementById("playerIndicator");
-
 const testFrequencies = [
   40,
   60,
@@ -134,6 +151,7 @@ yesBtn.addEventListener("click", () => {
 
   Tone.clearPulse().stop().disconnect();
   console.log(initdBfs - 3 * toneRepeat);
+  setPagination(2);
   toneRepeat += 1;
   playTone(initdBfs - 3 * toneRepeat);
 });
@@ -172,8 +190,35 @@ nobtn.addEventListener("click", () => {
       },
     });
   } else {
+    setPagination(1);
     nowPlaying += 1;
     toneRepeat = 0;
     playTone(initdBfs);
   }
 });
+
+function setPagination(mode) {
+  /**
+   * mode 1 set done to active box, set active to next box
+   * mode 2 increment red to the current active color
+   */
+  if (mode === 1) {
+    target = page_boxes[nowPlaying];
+    next = page_boxes[nowPlaying + 1];
+    target.classList.remove("active");
+    target.classList.add("done");
+    next.classList.add("active");
+  }
+  if (mode === 2) {
+    target = page_boxes[nowPlaying];
+    target_child = target.firstChild;
+    if (toneRepeat % 2 === 0) {
+      target.classList.remove("one");
+      target.classList.add("two");
+    } else {
+      target.classList.remove("two");
+      target.classList.add("one");
+    }
+    // target_child.style.color = `purple !important`;
+  }
+}
