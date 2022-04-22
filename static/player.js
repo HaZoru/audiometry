@@ -67,13 +67,6 @@ setBtn.addEventListener("click", () => {
    * start test if there is a click on last dialogue slide
    * change slides
    */
-  setupTone.stop();
-  isPlaying = false;
-  playPauseBtn.textContent = "Play";
-  playPauseBtn.classList.add("d-none");
-  dialogueBox.textContent = "Do not change your volume until the test is over!";
-  setBtn.textContent = "START";
-
   if (startTest) {
     setupSlide.classList.add("d-none");
     tonePlayer.classList.remove("d-none");
@@ -96,8 +89,16 @@ setBtn.addEventListener("click", () => {
     }
     // call some function here to set up other pure tone players and layout
     playTone(initdBfs);
+  } else {
+    setupTone.stop();
+    isPlaying = false;
+    playPauseBtn.textContent = "Play";
+    playPauseBtn.classList.add("d-none");
+    dialogueBox.textContent =
+      "Do not change your volume until the test is over!";
+    setBtn.textContent = "START";
+    startTest = true;
   }
-  startTest = true;
 });
 
 //main test section
