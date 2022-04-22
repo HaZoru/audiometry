@@ -19,7 +19,7 @@ const hzLog = document.querySelector(".exml.hzLog");
 
 if (window.location.pathname === "/test") {
   /**
-   * only bring expert mode to action while in /test path
+   * only set expert mode to action while in /test path
    */
   expertModeToggle.addEventListener("change", (e) => {
     e.preventDefault();

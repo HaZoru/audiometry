@@ -207,6 +207,7 @@ function setPagination(mode) {
    * mode 1 set done to active box, set active to next box
    * mode 2 set different classes to change color on each hit
    */
+  const color_list = ["zero", "one", "two", "three", "four", "five", "six"];
   if (mode === 1) {
     target = page_boxes[nowPlaying];
     next = page_boxes[nowPlaying + 1];
@@ -217,12 +218,27 @@ function setPagination(mode) {
   if (mode === 2) {
     target = page_boxes[nowPlaying];
     target_child = target.firstChild;
-    if (toneRepeat % 2 === 0) {
-      target.classList.remove("one");
+    if (toneRepeat === 0) {
+      target.classList.add("zero");
+    } else if (toneRepeat % 6 === 0) {
+      target.classList.remove(...color_list);
+      target.classList.add("six");
+    } else if (toneRepeat % 5 === 0) {
+      target.classList.remove(...color_list);
+      target.classList.add("five");
+    } else if (toneRepeat % 4 === 0) {
+      target.classList.remove(...color_list);
+      target.classList.add("four");
+    } else if (toneRepeat % 3 === 0) {
+      target.classList.remove(...color_list);
+      target.classList.add("three");
+    } else if (toneRepeat % 2 === 0) {
+      target.classList.remove(...color_list);
       target.classList.add("two");
     } else {
-      target.classList.remove("two");
+      target.classList.remove(...color_list);
       target.classList.add("one");
     }
+    console.log(toneRepeat, target.classList);
   }
 }

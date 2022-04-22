@@ -1,16 +1,34 @@
 .page-item.active a {
-    background-color: rgb(212, 79, 79) !important;
-    border: solid 1px rgb(212, 79, 79) !important;
+    background-color: rgb(255, 79, 79) !important;
+    border: solid 1px rgb(255, 79, 79) !important;
 }
-
+.page-item.active.zero a {
+    background-color: rgb(255, 190, 79) !important;
+    border: solid 1px rgb(255, 190, 79) !important;
+}
 .page-item.active.one a {
-    background-color: rgb(215, 145, 145) !important;
-    border: solid 1px rgb(215, 145, 145) !important;
+    background-color: rgb(230, 190, 79) !important;
+    border: solid 1px rgb(230, 190, 79) !important;
 }
-
 .page-item.active.two a {
-    background-color: rgb(255, 180, 152) !important;
-    border: solid 1px rgb(255, 180, 152) !important;
+    background-color: rgb(200, 190, 79) !important;
+    border: solid 1px rgb(200, 190, 79) !important;
+}
+.page-item.active.three a {
+    background-color: rgb(180, 190, 79) !important;
+    border: solid 1px rgb(180, 190, 79) !important;
+}
+.page-item.active.four a {
+    background-color: rgb(150, 190, 79) !important;
+    border: solid 1px rgb(150, 190, 79) !important;
+}
+.page-item.active.five a {
+    background-color: rgb(130, 190, 79) !important;
+    border: solid 1px rgb(130, 190, 79) !important;
+}
+.page-item.active.six a {
+    background-color: rgb(100, 190, 79) !important;
+    border: solid 1px rgb(100, 190, 79) !important;
 }
 
 .page-item.done a {
