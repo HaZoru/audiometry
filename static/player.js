@@ -7,18 +7,14 @@ const playIndicator = document.getElementById("playIndicator");
 const dialogueBox = document.getElementById("dialogueBox");
 const loader = document.getElementById("loader");
 let page_boxes;
-const yesBtnNotify = document.getElementById("yesBtnNotify");
 
 let setupTone;
 
-const logger = document.getElementById("logger");
 lowerVolConfirmBtn.addEventListener("click", () => {
   /**
    * click event handler; resume audioCtx if not running
    */
-  logger.textContent = "click works";
   function setUp() {
-    logger.textContent = "setup() works";
     setupTone = new PureTone(3500, -60);
     dialogueBox.textContent =
       "Press Play and start increasing the volume. Stop increasing when you hear a sound";
@@ -27,10 +23,8 @@ lowerVolConfirmBtn.addEventListener("click", () => {
   }
   if (audioCtx.state === "suspended") {
     audioCtx.resume();
-    logger.textContent = "if sus worked";
     setUp();
   } else {
-    logger.textContent = "else worked";
     setUp();
   }
 });
@@ -160,7 +154,6 @@ yesBtn.addEventListener("click", () => {
 
   Tone.stop().disconnect();
   console.log(initdBfs - 3 * toneRepeat);
-  yesBtnNotify.classList.remove("d-none");
   setPagination(2);
   toneRepeat += 1;
   playTone(initdBfs - 3 * toneRepeat);
@@ -200,7 +193,6 @@ nobtn.addEventListener("click", () => {
       },
     });
   } else {
-    yesBtnNotify.classList.add("d-none");
     setPagination(1);
     nowPlaying += 1;
     toneRepeat = 0;
