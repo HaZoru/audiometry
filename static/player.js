@@ -30,8 +30,8 @@ lowerVolConfirmBtn.addEventListener("click", () => {
     logger.textContent = "if sus worked";
     setUp();
   } else {
-    setUp();
     logger.textContent = "else worked";
+    setUp();
   }
 });
 
