@@ -25,10 +25,11 @@ def test():
 def submit():
     if request.method == 'POST':
         data = request.get_json()
+
         _id = uuid.uuid4().hex
-        dbfs = data["dbfs"]
-        hz = data["hz"]
-        # print(dbfs)
+        dbfs = data.get("dbfs")
+        hz = data.get("hz")
+
         doc = {"_id": _id, "dbfs": dbfs, "hz": hz}
         collection.insert_one(doc)
         return {"id": _id}, 200
@@ -47,7 +48,6 @@ def additional():
             print(name, age)
             return render_template('additional.html', name=name, age=age, sex=sex)
         else:
-            # print(collection.find_one({"_id": _id}))
             return "hey! some parameters are missing or invalid", 400
 
     if request.method == 'POST':
