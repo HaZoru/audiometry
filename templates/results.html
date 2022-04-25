@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block stylesheet %}
+<link rel="stylesheet" href="../static/styles/results.css">
+{% endblock %}
+{% block intro %}
+<!-- hero from https://getbootstrap.com/docs/5.1/examples/heroes/ -->
+<main role="main" class="col-md-12 ml-sm-auto col-lg-10 pt-3 px-4 ms-lg-5 ps-lg-5">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1 class="h2">Average Graph</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+                <button class="btn btn-sm btn-outline-secondary">Semi-log</button>
+            </div>
+        </div>
+    </div>
+
+    <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
+</main>
+{% endblock %}
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<script>
+    const dbfs = {{ dbfs | safe}}
+    const f = {{ f | safe }}
+</script>
+<script src="../static/results.js" defer></script>
+{% endblock %}

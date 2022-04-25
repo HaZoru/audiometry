@@ -76,3 +76,12 @@ def form_data_validators(age, name, mongo_id, sex):
     sex_is_valid = sex == 'male' or sex == 'female'
     valid_age = re.search(r"^(?:[1-9]\d|0?[1-9])$", age)
     return valid_age, valid_name, id_is_valid, sex_is_valid
+
+
+@app.route("/results")
+def results():
+    dbfs = [-39, -36, -51, -45, -45, -42, -48, -48, -51, -
+            57, -60, -57, -63, -63, -54, -51, -57, -54, -30]
+    f = [40, 60, 100, 200, 400, 500, 600, 1000, 2000, 3500,
+         4000, 5000, 6000, 8000, 9000, 10000, 11000, 12000, 15000]
+    return render_template('results.html', dbfs=dbfs, f=f)
