@@ -1,5 +1,5 @@
 @media (min-width: 768px) {
-    .wrapper {
-        height: 400px !important;
+    #myChart {
+        height: 500px !important;
     }
 }
