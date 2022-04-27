@@ -66,7 +66,9 @@ def additional():
             return 'invalid request', 400
         add = {"$set": {"name": name, "age": age, "sex": sex}}
         collection.update_one({"_id": _id}, add)
-        return f'<div style="font-size:25px;"> <strong style="color: green;">success</strong>. Thank you for your time <br> <br> id: {_id} <br> This id can be used to access your details </div>', 200
+        return f"""<div style="font-size:25px;">id: {_id} <br> <strong style="color: green;">success</strong>. Thank you for your time <br> <br> </div>
+    <div style="font-size:25px;"><strong style="color: red;">Disclaimer</strong>: The test results may not be accurate. A lot of things could go wrong during a single take including audio inconsistencies in different devices. For more accuracy multiple readings are recommended, however that would require more time and is not practical for most people.
+    If you suspect a hearing problem, you need to be tested by a qualified professional. If you still chose to view the results click <a href='/results?id={_id}'> here </a> to get a graph with a curve summarising the details.</div>""", 200
 
 
 def form_data_validators(age, name, mongo_id, sex):
@@ -80,8 +82,17 @@ def form_data_validators(age, name, mongo_id, sex):
 
 @app.route("/results")
 def results():
-    dbfs = [-39, -36, -51, -45, -45, -42, -48, -48, -51, -
-            57, -60, -57, -63, -63, -54, -51, -57, -54, -30]
-    f = [40, 60, 100, 200, 400, 500, 600, 1000, 2000, 3500,
-         4000, 5000, 6000, 8000, 9000, 10000, 11000, 12000, 15000]
-    return render_template('results.html', dbfs=dbfs, f=f)
+    args = request.args
+    _id = args.get('id')
+    doc = collection.find_one({"_id": _id})
+    if doc:
+        f = doc.get('hz')
+        dbfs = doc.get('dbfs')
+        name = doc.get('name')
+        return render_template('results.html', dbfs=dbfs, f=f, average=False, name=name)
+    else:
+        dbfs = [-39, -36, -51, -45, -45, -42, -48, -48, -51, -
+                57, -60, -57, -63, -63, -54, -51, -57, -54, -30]
+        f = [40, 60, 100, 200, 400, 500, 600, 1000, 2000, 3500,
+             4000, 5000, 6000, 8000, 9000, 10000, 11000, 12000, 15000]
+        return render_template('results.html', dbfs=dbfs, f=f, average=True)
