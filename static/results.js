@@ -5,7 +5,7 @@ var myChart = new Chart(ctx, {
     labels: f,
     datasets: [
       {
-        label: "Average",
+        label: "Gain curve",
         data: dbfs,
         lineTension: 0,
         backgroundColor: [
@@ -26,10 +26,21 @@ var myChart = new Chart(ctx, {
         type: "logarithmic",
         min: 40,
         max: 15000,
+        title: {
+          display: true,
+          text: "Frequency (in hz)",
+        },
+      },
+      y: {
+        display: true,
+        title: {
+          display: true,
+          text: "Gain (in dBfs)",
+        },
       },
     },
     legend: {
-      display: false,
+      display: true,
     },
     elements: {
       point: {
