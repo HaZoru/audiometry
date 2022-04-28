@@ -56,8 +56,13 @@ def additional():
             'name'), form_data.get('sex'), form_data.get('id')
         valid_age, valid_name, id_is_valid, sex_is_valid = form_data_validators(
             age, name, _id, sex)
-        if valid_name is None and name is not '':
-            return 'incorrect format or value for: name', 400
+        if valid_name is None and name != '':
+            return """incorrect format or value for: name <br> <br>
+        conditions: <br>
+        Minimum length (3). <br>
+Maximum length(24). <br>
+Can only contain alphanumeric characters and the following special characters: dot (.), underscore(_) and dash (-). <br>
+The special characters cannot appear more than once consecutively or combined.""", 400
         if valid_age is None:
             return 'incorrect format or value for: age', 400
         if not sex_is_valid:
@@ -75,6 +80,7 @@ def form_data_validators(age, name, mongo_id, sex):
     id_is_valid = collection.find_one({"_id": mongo_id}) is not None
     valid_name = re.search(
         r"(?!.*[\.\-\_]{2,})^[a-zA-Z0-9\.\-\_\s]{3,24}$", name)
+    # name validation regex from https://regexr.com/3e91o
     sex_is_valid = sex == 'male' or sex == 'female'
     valid_age = re.search(r"^(?:[1-9]\d|0?[1-9])$", age)
     return valid_age, valid_name, id_is_valid, sex_is_valid
